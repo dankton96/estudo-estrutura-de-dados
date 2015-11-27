@@ -12,14 +12,12 @@ typedef struct TipoPilha
 bool procura(TipoPilha *pilha1, int num,bool &res)
 {
   while(pilha1->prev!=NULL){pilha1=pilha1->prev;};
-      while(num!=pilha1->item || pilha1->next!=NULL)
+  while(num!=pilha1->item || pilha1->next!=NULL)
       {
         if(pilha1->next==NULL && pilha1->item!=num){res=false;}
         if(pilha1->item==num){res=true;}
         else{pilha1=pilha1->next;}
-      }  
-        
-      }
+      };  
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TipoPilha empilha(TipoPilha *pilha2, int num)
