@@ -18,5 +18,5 @@ void main()
         empilha(p1aux,num);
     }
     mostrapilha(p1aux);
-    free(*p1aux);
+    free(p1aux);
 }
