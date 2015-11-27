@@ -9,7 +9,7 @@ typedef struct TipoPilha
   struct TipoPilha *next,*prev;
 }TipoPilha;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool procura(TipoPilha *pilha1, int num,bool &res)
+bool procura(TipoPilha *pilha1, int num,bool res)
 {
   while(pilha1->prev!=NULL){pilha1=pilha1->prev;};
   while(num!=pilha1->item || pilha1->next!=NULL)
