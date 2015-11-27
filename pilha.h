@@ -9,27 +9,33 @@ typedef struct TipoPilha
   struct TipoPilha *next,*prev;
 }TipoPilha;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool procura(TipoPilha *pilha1, int num,bool res)
+bool procura(TipoPilha *pilha1, int num,bool &res)
 {
-if(pilha1->prev!=NULL){procura(pilha1->prev,num,res);}
-    else{
-    if(pilha1->next==NULL && pilha1->item!=num){res=false;}
-    if(pilha1->item==num){res=true;}
-        else{procura(pilha1->next,num,res);}
-        }
+  while(pilha1->prev!=NULL){pilha1=pilha1->prev;};
+      while(num!=pilha1->item || pilha1->next!=NULL)
+      {
+        if(pilha1->next==NULL && pilha1->item!=num){res=false;}
+        if(pilha1->item==num){res=true;}
+        else{pilha1=pilha1->next;}
+      }  
+        
+      }
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TipoPilha empilha(TipoPilha *pilha2, int num)
 {
+    while(pilha2->next!=NULL){pilha2=pilha2->next;};
     if(pilha2->next==NULL)
         {
             pilha2->next=(TipoPilha*)malloc(sizeof(TipoPilha));
-            if(pilha2->next==NULL){printf("erro ao empilhar"); exit(0);}
+            if(pilha2->next==NULL){
+            printf("erro ao empilhar");
+            free(pilha2); exit(0);
+                                  }
             pilha2->next->item=num;
             pilha2->next->prev=pilha2;
             pilha2->next->next=NULL;
         }
-    else{empilha(pilha2->next,num);}
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TipoPilha desempilha(TipoPilha *pilha3)
