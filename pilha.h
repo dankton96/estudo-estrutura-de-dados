@@ -26,7 +26,7 @@ TipoPilha empilha(TipoPilha *pilha2, int num)
             pilha2->next=(TipoPilha*)malloc(sizeof(TipoPilha));
             if(pilha2->next==NULL){printf("erro ao empilhar"); exit(0);}
             pilha2->next->item=num;
-            pilha2->next->prev=&pilha2;
+            pilha2->next->prev=pilha2;
             pilha2->next->next=NULL;
         }
     else{empilha(pilha2->next,num);}
